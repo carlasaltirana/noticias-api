@@ -2,11 +2,11 @@ import { Container, Grid, Typography } from '@mui/material'
 import Formulario from './components/Formulario'
 import ListadoNoticias from './components/ListadoNoticias'
 import { NoticiasProvider } from './context/NoticiasProvider'
-
+import './components/styles/styles.css'
 function App() {
   return(
   <NoticiasProvider> 
-    <Container style={{ background: '#f5f5dc ' }} >
+    <Container style={{ background: '#FEFAE0 ' }} >
         <header>
           <Typography align = 'center' marginY = {5} component = "h1" variant = 'h2'>
             NEWS
