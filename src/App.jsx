@@ -6,10 +6,14 @@ import './components/styles/styles.css'
 function App() {
   return(
   <NoticiasProvider> 
-    <Container style={{ background: '#FEFAE0 ' }} >
+    <Container style={{ background: ' #F9F1D3' }} >
         <header>
-          <Typography align = 'center' marginY = {5} component = "h1" variant = 'h2'>
-            NEWS
+        
+          <Typography
+          sx ={{color:'#A54014',borderTop: '3px solid ', borderBottom: '3px solid ', paddingBottom: '5px'}}
+           align = 'center' marginY = {5} component = "h1" variant = 'h1'
+          >
+            NEWS 
           </Typography>
         </header>
 

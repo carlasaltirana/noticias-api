@@ -5,19 +5,19 @@ import CardMedia from '@mui/material/CardMedia'
 import Link from '@mui/material/Link'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid' 
-import { border } from '@mui/system'
+
 
 const Noticia = ({noticia}) => {
 
-    const { urlToImage, url, title, source } = noticia
+    const { image , url, title, source } = noticia
     return (
       
       <Grid item xs={6} md={3} ld={4} >
-        <Card style={{ height: '100%',background: '#9D7166 ' }}>
+        <Card style={{ height: '100%',background: '#F9F1D3' }}>
           <CardMedia 
             component ="img"
             alt ={`Imagen de la noticia ${title}`}
-            image ={urlToImage}
+            image ={image}
             height= {'100'} 
                       
           />
@@ -25,7 +25,8 @@ const Noticia = ({noticia}) => {
               {/* <Typography variant = 'body1' color="error">
                 {source.name} */}
               {/* </Typography> */}
-              <Typography variant = 'h6' component="div">
+              <Typography sx ={{color:'#A54014',fontSize:'16px'}} variant = 'h6' component="div"
+              textAlign = "center">
                 {title}
               </Typography>
               {/* <Typography variant = 'body2' 

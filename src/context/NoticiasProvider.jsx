@@ -1,25 +1,27 @@
 import { useState, useEffect, createContext } from 'react'
 import axios from 'axios';
-import { useForkRef } from '@mui/material';
+
 
 const NoticiasContext = createContext()
 
 const NoticiasProvider = ({children}) => {
-    const [ categoria, setCategoria ] = useState ('general')
+    const [ categoria, setCategoria ] = useState ('breaking-news')
     const [ noticias, setNoticias ] = useState ([])
     const [ pagina, setPagina ] = useState (1)
     const [ totalNoticias, setTotalNoticias ] = useState (0)
-    
+
     useEffect(() => {
       const consultarApi = async () => {
-        const url = `https://newsapi.org/v2/top-headlines?country=ar&category=${categoria}&apiKey=${import.meta.env.VITE_API_KEY}`
+        const url = `https://gnews.io/api/v4/top-headlines?topic=${categoria}&token=${import.meta.env.VITE_API_KEY}&lang=en&country=us&max=20`
         
         const { data } = await axios(url)
+        console.log(data)
 
-        setNoticias(data.articles)
-        setTotalNoticias(data.totalResults)
-        setPagina(1)
-      }   
+
+         setNoticias(data.articles)
+         setTotalNoticias(data.totalResults)
+         setPagina(1)
+       }   
       consultarApi()
       
     }, [categoria]);
@@ -27,19 +29,19 @@ const NoticiasProvider = ({children}) => {
     
 
 
-    useEffect(() => {
-      const consultarApi = async () => {
-        const url = `https://newsapi.org/v2/top-headlines?country=ar&page=${pagina}&category=${categoria}&apiKey=${import.meta.env.VITE_API_KEY}`
+    // useEffect(() => {
+    //   const consultarApi = async () => {
+    //     const url = `https://newsapi.org/v2/top-headlines?country=ar&page=${pagina}&category=${categoria}&apiKey=${import.meta.env.VITE_API_KEY}`
         
-        const { data } = await axios(url)
+    //     const { data } = await axios(url)
 
-        setNoticias(data.articles)
-        setTotalNoticias(data.totalResults)
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-      }   
-      consultarApi()
+    //     setNoticias(data.articles)
+    //     setTotalNoticias(data.totalResults)
+    //     window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    //   }   
+    //   consultarApi()
       
-    }, [pagina]);
+    // }, [pagina]);
     
 
     const handleChangeCategoria = (e) => {
